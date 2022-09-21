@@ -186,14 +186,14 @@ function hexExpand(str) {
 rgb.addEventListener('click', function () {
     const newColor = makeNewRGB();
     setStyles(newColor);
-    description.classList.add('hide');
+    description.remove();
 })
 
 hex.addEventListener('click', function () {
     const newHex = makeNewHex();
     const newColor = hexExpand(newHex);
     setStyles(newColor);
-    description.classList.add('hide');
+    description.remove();
 })
 
 trans.addEventListener('click', function () {
