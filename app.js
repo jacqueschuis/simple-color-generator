@@ -4,6 +4,7 @@ const hex = document.querySelector('#hex');
 const nav = document.querySelector('nav');
 const logo = document.querySelector('#logo');
 const trans = document.querySelector('#translate');
+const description = document.querySelector('#description');
 
 function makeNewHex() {
     const hexRandomArray = [
@@ -185,13 +186,14 @@ function hexExpand(str) {
 rgb.addEventListener('click', function () {
     const newColor = makeNewRGB();
     setStyles(newColor);
+    description.classList.add('hide');
 })
 
 hex.addEventListener('click', function () {
     const newHex = makeNewHex();
     const newColor = hexExpand(newHex);
     setStyles(newColor);
-    console.log(newColor)
+    description.classList.add('hide');
 })
 
 trans.addEventListener('click', function () {
