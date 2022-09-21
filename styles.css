@@ -1,0 +1,21 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav {
+    font-weight: 700;
+}
+
+#rgb,
+#hex {
+    font-weight: 700;
+}
+
+#head {
+    font-weight: 300;
+}
+
+.btn-primary {
+    background-color: #a7b8be;
+    border-color: #788285;
+}

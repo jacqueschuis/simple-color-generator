@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/04e3fb49b4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;700&display=swap" rel="stylesheet">
+    <title>Color Picker Test</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container ms-2">
+            <a href="#" class="navbar-brand" id="logo">simple color generator</a>
+        </div>
+    </nav>
+
+    <div class="container text-center">
+        <div class="row">
+            <h1 id="title" class="my-5">Click a button to generate an RGB or hex color:</h1>
+        </div>
+
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-5"></div>
+                <div class="btn-group col-2">
+                    <button id="rgb" class="btn btn-lg btn-primary p-2">rgb</button>
+                    <button id="translate" class="btn btn-primary col-2 p-2">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </button>
+                    <button id="hex" class="btn btn-lg btn-primary p-2">hex</button>
+                </div>
+                <div class="col-5"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- <div class="container" id="debug">
+        <h2 id="debugHead">
+            #10BCAE
+        </h2>
+        <div id="debugLight">color</div>
+        <div id="debugReg">color</div>
+        <div id="debugDark">color</div>
+        <button class="btn btn-primary" id="debugbutton">debug</button>
+    </div> -->
+
+    <script src="app.js"></script>
+</body>
+
+</html>
