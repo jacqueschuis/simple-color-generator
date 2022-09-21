@@ -19,3 +19,7 @@ nav {
     background-color: #a7b8be;
     border-color: #788285;
 }
+
+.hide {
+    display: none;
+}
