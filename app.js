@@ -198,92 +198,10 @@ trans.addEventListener('click', function () {
     if (head.innerText[0] === '#') {
         const newColor = hexToRGB(head.innerText);
         head.innerText = newColor;
+    } else if (head.innerText[0] === 'C') {
+        return
     } else {
         const newColor = rgbToHex(head.innerText);
         head.innerText = newColor;
     }
-})
-
-
-//debugging the hex colors
-
-const debugHex = '#10BCAE'
-const debugHead = document.querySelector('#debugHead');
-const debugLight = document.querySelector('#debugLight');
-const debugReg = document.querySelector('#debugReg');
-const debugDark = document.querySelector('#debugDark');
-const debugButton = document.querySelector('#debugbutton');
-
-function debugStyles(obj) {
-    debugHead.innerText = obj.reg;
-    debugLight.style.backgroundColor = obj.light;
-    debugDark.style.backgroundColor = obj.dark;
-    debugReg.style.backgroundColor = obj.reg;
-    debugLight.innerText = obj.light;
-    debugReg.innerText = obj.reg;
-    debugDark.innerText = obj.dark;
-}
-
-function debugHexExpand(str) {
-    const stepOne = str.split("");
-    const stepTwo = stepOne.shift();
-    const stepThree = stepOne.map(function (num) {
-        if (num === 'A') {
-            return 10
-        }
-        else if (num === 'B') {
-            return 11
-        }
-        else if (num === 'C') {
-            return 12
-        }
-        else if (num === 'D') {
-            return 13
-        }
-        else if (num === 'E') {
-            return 14
-        }
-        else if (num === 'F') {
-            return 15
-        } else { return parseInt(num) }
-    })
-    const stepFour = [
-        stepThree[0] * 16,
-        stepThree[1],
-        stepThree[2] * 16,
-        stepThree[3],
-        stepThree[4] * 16,
-        stepThree[5]];
-
-    const stepFive = [
-        stepFour[0] + stepFour[1],
-        stepFour[2] + stepFour[3],
-        stepFour[4] + stepFour[5],
-    ]
-    console.log(stepFive)
-
-    const stepSix = stepFive.map(function (num) {
-        if (num + 50 > 255) {
-            return 255
-        }
-        return num + 50;
-    })
-
-    const stepSeven = stepFive.map(function (num) {
-        if (num - 50 < 0) {
-            return 0
-        }
-        return num - 50;
-    })
-
-    return {
-        reg: `${str}`,
-        light: `rgb(${stepSeven[0]}, ${stepSeven[1]}, ${stepSeven[2]})`,
-        dark: `rgb(${stepSix[0]}, ${stepSix[1]}, ${stepSix[2]})`,
-    }
-}
-
-debugButton.addEventListener('click', function () {
-    const newColor = debugHexExpand(debugHead.innerText);
-    debugStyles(newColor);
 })
