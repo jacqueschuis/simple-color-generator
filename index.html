@@ -12,38 +12,48 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap" rel="stylesheet">
     <title>simple color generator</title>
 </head>
 
-<body>
-    <nav class="navbar">
-        <div class="container ms-2">
-            <a href="#" class="navbar-brand" id="logo">simple color generator</a>
-        </div>
+<body class="d-flex flex-column">
+    <nav class="navbar text-center ps-md-5 d-flex justify-content-md-start justify-content-center">    
+        <a href="/" class="navbar-brand m-0 p-0 fs-1" id="logo">SC</a>
     </nav>
 
-    <div class="container text-center">
+    <main class="container mt-md-5">
         <div class="row">
-            <h1 id="title" class="my-5">Click a button to generate an RGB or hex color:</h1>
-             <p id="description">The 'rgb' button will generate a random RGB color. The 'hex' button will generate a random hexadecimal color. The middle button will translate your color between the two systems.</p>
-        </div>
-
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-lg-5"></div>
-                <div class="btn-group col-lg-2" role="group">
-                    <button id="rgb" class="btn btn-lg btn-primary p-2" type="button">rgb</button>
-                    <button id="translate" class="btn btn-primary col-2 p-2" type="button">
-                        <i class="fa-solid fa-arrows-rotate"></i>
-                    </button>
-                    <button id="hex" class="btn btn-lg btn-primary p-2" type="button">hex</button>
+            <div id="title-column" class="col-md-6 d-flex flex-column">
+                <h1 class="header text-md-end text-center mt-5 lh-1"><span>simple color</span><span>generator</span></h1>
+                <h2 id="base-color" class="text-md-end text-center"></h2>
+                <div class="btn-group my-md-2 my-5" role="group">
+                    <button id="new-color" class="btn btn-lg">new color</button>
+                    <button id="translate" class="btn btn-lg"><i class="fa-solid fa-arrows-rotate"></i></button>    
                 </div>
-                <div class="col-lg-5"></div>
-
+            </div>
+            <div id="results-column" class="col-md-6">
+                <div class="card rounded-4 container shadow" id="scheme">
+                    <div class="card-body">
+                        <h2 class="card-title" id="scheme-title">scheme</h2>
+                        <div id="scheme-container" class="d-flex flex-column">
+                            <div id="light" class="color-result w-100 rounded-pill">
+                                <h3 class="color-info" id="color-info-light"></h3>
+                            </div>
+                            <div id="reg" class="color-result w-100 rounded-pill">
+                                <h3 class="color-info" id="color-info-reg"></h3>
+                            </div>
+                            <div id="dark" class="color-result w-100 rounded-pill">
+                                <h3 class="color-info" id="color-info-dark"></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
-    </div>
+        <div class="row">
+        </div>
+    </main>
 
     <script src="app.js"></script>
 </body>

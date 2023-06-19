@@ -3,207 +3,122 @@ const rgb = document.querySelector('#rgb');
 const hex = document.querySelector('#hex');
 const nav = document.querySelector('nav');
 const logo = document.querySelector('#logo');
-const trans = document.querySelector('#translate');
+const translate = document.querySelector('#translate');
+const header = document.querySelector('.header')
 const description = document.querySelector('#description');
+const btn = document.querySelector('#new-color')
+const baseColor = document.querySelector('#base-color')
 
-function makeNewHex() {
-    const hexRandomArray = [
-        Math.floor(Math.random() * 16),
-        Math.floor(Math.random() * 16),
-        Math.floor(Math.random() * 16),
-        Math.floor(Math.random() * 16),
-        Math.floor(Math.random() * 16),
-        Math.floor(Math.random() * 16),
-    ]
+const dark = document.querySelector('#dark');
+const reg = document.querySelector('#reg');
+const light = document.querySelector('#light');
+const schemeTitle = document.querySelector('#scheme-title');
+const colorInfoDark = document.querySelector('#color-info-dark');
+const colorInfoReg = document.querySelector('#color-info-reg');
+const colorInfoLight = document.querySelector('#color-info-light');
 
-    const hexArray = hexRandomArray.map(function (num) {
-        if (num === 10) {
-            return 'A'
-        } else if (num === 11) {
-            return 'B'
-        } else if (num === 12) {
-            return 'C'
-        } else if (num === 13) {
-            return 'D'
-        } else if (num === 14) {
-            return 'E'
-        } else if (num === 15) {
-            return 'F'
-        } else {
-            return num
+let newColor;
+
+class Color {
+    constructor () {
+        this.r = Math.floor(Math.random() * 255);
+        this.g = Math.floor(Math.random() * 255);
+        this.b = Math.floor(Math.random() * 255);
+    }
+    innerRGB(){
+        const {r, g, b} = this;
+        return `${r}, ${g}, ${b}`;
+    }
+    rgb(){
+        return `rgb(${this.innerRGB()})`;
+    }
+    hex(){
+        const {r, g, b} =this;
+        return (
+            ('#' + ((1<<24) + (r << 16) + (g<<8) +b).toString(16).slice(1)).toUpperCase()
+        )
+    }
+    lightObj(x) {
+        const {r, g, b} = this;
+        return {
+            lightR: Math.min(Math.max(r+50*x,0),255),
+            lightG: Math.min(Math.max(g+50*x,0),255),
+            lightB: Math.min(Math.max(b+50*x,0),255),
         }
-    })
-
-    const hexString = hexArray.join("");
-
-    return `#${hexString}`
-}
-function makeNewRGB() {
-    const r = Math.floor(Math.random() * 255);
-    const g = Math.floor(Math.random() * 255);
-    const b = Math.floor(Math.random() * 255);
-    return {
-        reg: `rgb(${r}, ${g}, ${b})`,
-        light: `rgb(${r + 50}, ${g + 50}, ${b + 50})`,
-        dark: `rgb(${r - 50}, ${g - 50}, ${b - 50})`
+    }
+    innerLight(x){
+        const {lightR, lightG, lightB} = this.lightObj(x);
+        return `${lightR}, ${lightG}, ${lightB}`;
+    }
+    light(x=1){
+        return `rgb(${this.innerLight(x)})`; 
+    }
+    darkObj(x){
+        const {r, g, b} = this;
+        return {
+            darkR: Math.min(Math.max(r-50*x,0),255) ,
+            darkG: Math.min(Math.max(g-50*x,0),255),
+            darkB: Math.min(Math.max(b-50*x,0),255),
+        }
+    }
+    innerDark(x = 1) {  
+        const {darkR, darkG, darkB} = this.darkObj(x);
+        return `${darkR}, ${darkG}, ${darkB}`;
+    }
+    dark(x = 1){
+        return `rgb(${this.innerDark(x)})`
+    }
+    lightHex(x =1){
+        const {lightR, lightG, lightB} = this.lightObj(x);
+        return (
+            ('#' + ((1<<24) + (lightR << 16) + (lightG<<8) +lightB).toString(16).slice(1)).toUpperCase()
+        )
+    }
+    darkHex(x=1){
+          const {darkR, darkG, darkB} = this.darkObj(x);
+        return (
+            ('#' + ((1<<24) + (darkR << 16) + (darkG<<8) +darkB).toString(16).slice(1)).toUpperCase()
+        )
     }
 }
-function rgbToHex(str) {
-    str.trim();
-    let rgbVals = str.replace("rgb(", "");
-    rgbVals = rgbVals.substring(0, rgbVals.length - 1);
-    const valsOnly = rgbVals.split(",")
 
-    const threeVals = valsOnly.map(function (num) {
-        return parseInt(num)
-    })
-
-    const threeValsHex1 = threeVals.map(function (num) {
-        return num.toString(16);
-    })
-
-    const threeValsHex = threeValsHex1.map(function (num) {
-        return num.padStart(2, '0');
-    })
-
-    return (`#${threeValsHex[0]}${threeValsHex[1]}${threeValsHex[2]}`).toUpperCase();
-
-}
-function hexToRGB(str) {
-    const stepOne = str.split("");
-    const stepTwo = stepOne.shift();
-    const stepThree = stepOne.map(function (num) {
-        if (num === 'A') {
-            return 10
-        }
-        else if (num === 'B') {
-            return 11
-        }
-        else if (num === 'C') {
-            return 12
-        }
-        else if (num === 'D') {
-            return 13
-        }
-        else if (num === 'E') {
-            return 14
-        }
-        else if (num === 'F') {
-            return 15
-        } else { return parseInt(num) }
-    })
-    const stepFour = [
-        stepThree[0] * 16,
-        stepThree[1],
-        stepThree[2] * 16,
-        stepThree[3],
-        stepThree[4] * 16,
-        stepThree[5]];
-
-    const stepFive = [
-        stepFour[0] + stepFour[1],
-        stepFour[2] + stepFour[3],
-        stepFour[4] + stepFour[5],
-    ]
-    return `rgb(${stepFive[0]}, ${stepFive[1]}, ${stepFive[2]})`
-}
-function setStyles(obj) {
-    head.innerText = obj.reg;
-    head.style.color = obj.dark;
-    document.body.style.backgroundColor = obj.reg;
-    logo.style.color = obj.dark;
-    nav.style.backgroundColor = obj.light;
-    hex.style.backgroundColor = obj.light;
-    rgb.style.backgroundColor = obj.light;
-    translate.style.backgroundColor = obj.light;
-    rgb.style.borderColor = obj.dark;
-    hex.style.borderColor = obj.dark;
-    translate.style.borderColor = obj.dark;
-    rgb.style.color = obj.dark;
-    hex.style.color = obj.dark;
-    translate.style.color = obj.dark;
-}
-function hexExpand(str) {
-    const stepOne = str.split("");
-    const stepTwo = stepOne.shift();
-    const stepThree = stepOne.map(function (num) {
-        if (num === 'A') {
-            return 10
-        }
-        else if (num === 'B') {
-            return 11
-        }
-        else if (num === 'C') {
-            return 12
-        }
-        else if (num === 'D') {
-            return 13
-        }
-        else if (num === 'E') {
-            return 14
-        }
-        else if (num === 'F') {
-            return 15
-        } else { return parseInt(num) }
-    })
-    const stepFour = [
-        stepThree[0] * 16,
-        stepThree[1],
-        stepThree[2] * 16,
-        stepThree[3],
-        stepThree[4] * 16,
-        stepThree[5]];
-
-    const stepFive = [
-        stepFour[0] + stepFour[1],
-        stepFour[2] + stepFour[3],
-        stepFour[4] + stepFour[5],
-    ]
-    console.log(stepFive)
-
-    const stepSix = stepFive.map(function (num) {
-        if (num + 50 > 255) {
-            return 255
-        }
-        return num + 50;
-    })
-
-    const stepSeven = stepFive.map(function (num) {
-        if (num - 50 < 0) {
-            return 0
-        }
-        return num - 50;
-    })
-
-    return {
-        reg: str,
-        light: `rgb(${stepSix[0]}, ${stepSix[1]}, ${stepSix[2]})`,
-        dark: `rgb(${stepSeven[0]}, ${stepSeven[1]}, ${stepSeven[2]})`,
-    }
+function setRGBStyles(obj) {
+    baseColor.innerText = obj.rgb();
+    baseColor.style.color = obj.dark();
+    header.style.color = obj.dark();
+    document.body.style.backgroundColor = obj.rgb();
+    logo.style.color = obj.dark();
+    nav.style.backgroundColor = obj.light();
+    btn.style.backgroundColor = obj.light();
+    translate.style.backgroundColor = obj.light();
+    btn.style.borderColor = obj.dark();
+    translate.style.borderColor = obj.dark();
+    btn.style.color = obj.dark();
+    translate.style.color = obj.dark();
+    schemeTitle.style.color = obj.rgb();
+    dark.style.backgroundColor = obj.dark();
+    reg.style.backgroundColor = obj.rgb();
+    light.style.backgroundColor = obj.light();
+    colorInfoDark.innerText = obj.dark();
+    colorInfoReg.innerText = obj.rgb();
+    colorInfoLight.innerText = obj.light();
 
 }
+function setHexStyles(obj) {
+    baseColor.innerText = obj.hex();
+    colorInfoDark.innerText = obj.darkHex();
+    colorInfoReg.innerText = obj.hex();
+    colorInfoLight.innerText = obj.lightHex();
+}
 
-rgb.addEventListener('click', function () {
-    const newColor = makeNewRGB();
-    setStyles(newColor);
-    description.remove();
+btn.addEventListener('click', function () {
+    newColor = new Color;
+    setRGBStyles(newColor);
 })
 
-hex.addEventListener('click', function () {
-    const newHex = makeNewHex();
-    const newColor = hexExpand(newHex);
-    setStyles(newColor);
-    description.remove();
-})
-
-trans.addEventListener('click', function () {
-    if (head.innerText[0] === '#') {
-        const newColor = hexToRGB(head.innerText);
-        head.innerText = newColor;
-    } else if (head.innerText[0] === 'C') {
-        return
-    } else {
-        const newColor = rgbToHex(head.innerText);
-        head.innerText = newColor;
+translate.addEventListener('click', function () {
+    if (baseColor.innerText[0] === 'r') {
+        return setHexStyles(newColor)
     }
+   setRGBStyles(newColor)
 })

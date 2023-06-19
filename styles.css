@@ -1,25 +1,28 @@
-body {
+body, #new-color {
     font-family: 'Montserrat', sans-serif;
-}
-
-nav {
     font-weight: 700;
 }
 
-#rgb,
-#hex {
-    font-weight: 700;
+nav, h1, h2 {
+    font-family: 'Bagel Fat One', cursive;
+    letter-spacing: .1rem;
 }
 
-#head {
-    font-weight: 300;
+.header {
+    font-size: calc(40px + (80 - 40) * ((100vw - 200px) / (1440 - 200)));
 }
 
-.btn-primary {
-    background-color: #a7b8be;
-    border-color: #788285;
+#scheme-container{
+    gap: 10px;
 }
 
-.hide {
-    display: none;
+.color-result {
+    height: calc(80px + (110 - 80) * ((100vw - 200px) / (1440 - 200)));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+span {
+    display: block;
 }
