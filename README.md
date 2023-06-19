@@ -1,7 +1,7 @@
 # Color Generator
 ![](./screenshot.png)
 
-## [live site](https://jacqueschuis.github.io/simple-color-generator/)
+## [live site](https://simple-color-generator.vercel.app/)
 
 ## Table of Contents
 

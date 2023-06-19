@@ -128,7 +128,7 @@ btn.addEventListener('click', function () {
     titleColumn.classList.add('col-md-6');
     titleColumn.classList.add('align-items-md-end');
     resultsColumn.classList.remove('d-none');
-    resultsColumn.classList.add('col-md-6')
+    resultsColumn.classList.add('col-md-6');
     newColor = new Color;
     setColors(newColor);
     rgbText(newColor);
