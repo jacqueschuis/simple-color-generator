@@ -16,6 +16,8 @@ const schemeTitle = document.querySelector('#scheme-title');
 const colorInfoDark = document.querySelector('#color-info-dark');
 const colorInfoReg = document.querySelector('#color-info-reg');
 const colorInfoLight = document.querySelector('#color-info-light');
+const titleColumn = document.querySelector('#title-column');
+const resultsColumn = document.querySelector('#results-column');
 
 let newColor;
 
@@ -123,6 +125,10 @@ function hexText(color) {
 }
 
 btn.addEventListener('click', function () {
+    titleColumn.classList.add('col-md-6');
+    titleColumn.classList.add('align-items-md-end');
+    resultsColumn.classList.remove('d-none');
+    resultsColumn.classList.add('col-md-6')
     newColor = new Color;
     setColors(newColor);
     rgbText(newColor);
