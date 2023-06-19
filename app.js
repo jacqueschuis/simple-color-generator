@@ -82,43 +82,55 @@ class Color {
     }
 }
 
-function setRGBStyles(obj) {
-    baseColor.innerText = obj.rgb();
-    baseColor.style.color = obj.dark();
-    header.style.color = obj.dark();
-    document.body.style.backgroundColor = obj.rgb();
-    logo.style.color = obj.dark();
-    nav.style.backgroundColor = obj.light();
-    btn.style.backgroundColor = obj.light();
-    translate.style.backgroundColor = obj.light();
-    btn.style.borderColor = obj.dark();
-    translate.style.borderColor = obj.dark();
-    btn.style.color = obj.dark();
-    translate.style.color = obj.dark();
-    schemeTitle.style.color = obj.rgb();
-    dark.style.backgroundColor = obj.dark();
-    reg.style.backgroundColor = obj.rgb();
-    light.style.backgroundColor = obj.light();
-    colorInfoDark.innerText = obj.dark();
-    colorInfoReg.innerText = obj.rgb();
-    colorInfoLight.innerText = obj.light();
+function setColors(color) {
+    // dark
+    baseColor.style.color = color.dark();
+    header.style.color = color.dark();
+    logo.style.color = color.dark();
+    btn.style.borderColor = color.dark();
+    translate.style.borderColor = color.dark();
+    btn.style.color = color.dark();
+    translate.style.color = color.dark();
+    dark.style.backgroundColor = color.dark();
+    colorInfoReg.style.color = color.dark(2);
+    colorInfoLight.style.color = color.dark();
+
+    // light
+    colorInfoDark.style.color = color.light();
+    nav.style.backgroundColor = color.light();
+    btn.style.backgroundColor = color.light();
+    translate.style.backgroundColor = color.light();
+    light.style.backgroundColor = color.light();
+
+    // reg
+    document.body.style.backgroundColor = color.rgb();
+    schemeTitle.style.color = color.rgb();
+    reg.style.backgroundColor = color.rgb();
+}
+
+function rgbText(color) {
+    baseColor.innerText = color.rgb();
+    colorInfoDark.innerText = color.dark();
+    colorInfoReg.innerText = color.rgb();
+    colorInfoLight.innerText = color.light();
 
 }
-function setHexStyles(obj) {
-    baseColor.innerText = obj.hex();
-    colorInfoDark.innerText = obj.darkHex();
-    colorInfoReg.innerText = obj.hex();
-    colorInfoLight.innerText = obj.lightHex();
+function hexText(color) {
+    baseColor.innerText = color.hex();
+    colorInfoDark.innerText = color.darkHex();
+    colorInfoReg.innerText = color.hex();
+    colorInfoLight.innerText = color.lightHex();
 }
 
 btn.addEventListener('click', function () {
     newColor = new Color;
-    setRGBStyles(newColor);
+    setColors(newColor);
+    rgbText(newColor);
 })
 
 translate.addEventListener('click', function () {
     if (baseColor.innerText[0] === 'r') {
-        return setHexStyles(newColor)
+        return hexText(newColor)
     }
-   setRGBStyles(newColor)
+   rgbText(newColor)
 })

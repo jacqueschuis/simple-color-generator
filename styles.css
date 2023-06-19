@@ -1,4 +1,4 @@
-body, #new-color {
+body, #new-color, .color-info {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
 }
@@ -21,6 +21,10 @@ nav, h1, h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.color-info {
+    font-size: calc(25px + (30 - 25) * ((100vw - 200px) / (1440 - 200)));
 }
 
 span {
