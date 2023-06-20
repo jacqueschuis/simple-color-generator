@@ -44,6 +44,10 @@ span {
     display: block;
 }
 
+footer {
+    font-size: 12px
+}
+
 #portfolio-link {
     color: inherit !important;
 }

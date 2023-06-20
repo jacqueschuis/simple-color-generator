@@ -32,6 +32,8 @@ let newColor;
 let palette;
 let visibleResults = 0;
 
+let history = [];
+
 class Color {
     constructor () {
         this.r = Math.floor(Math.random() * 255);
@@ -146,6 +148,11 @@ btn.addEventListener('click', function () {
     clipboardIcon.classList.add('bi-clipboard');
     newColor = new Color;
     palette = `base: ${newColor.rgb()}, light: ${newColor.light()}, dark: ${newColor.dark()}`;
+    history.push({
+        base: newColor.rgb(),
+        light: newColor.light(),
+        dark: newColor.dark(),
+    })
     setColors(newColor);
     rgbText(newColor);
 })
@@ -159,6 +166,7 @@ translate.addEventListener('click', function () {
     }
    clipboardIcon.classList.remove('bi-clipboard-check');
    clipboardIcon.classList.add('bi-clipboard');
+   palette = `base: ${newColor.rgb()}, light: ${newColor.light()}, dark: ${newColor.dark()}`;
    rgbText(newColor)
 })
 
