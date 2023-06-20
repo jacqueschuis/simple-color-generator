@@ -20,8 +20,12 @@ const titleColumn = document.querySelector('#title-column');
 const resultsColumn = document.querySelector('#results-column');
 const footerText = document.querySelector('#footer-text');
 const footer = document.querySelector('footer');
+const colorResults = document.querySelectorAll('.color-result');
+
+const clipboard = document.querySelector('#clipboard')
 
 let newColor;
+let palette;
 
 class Color {
     constructor () {
@@ -119,7 +123,6 @@ function rgbText(color) {
     colorInfoDark.innerText = color.dark();
     colorInfoReg.innerText = color.rgb();
     colorInfoLight.innerText = color.light();
-
 }
 function hexText(color) {
     baseColor.innerText = color.hex();
@@ -133,13 +136,25 @@ btn.addEventListener('click', function () {
     titleColumn.classList.add('align-items-md-end');
     resultsColumn.style.transform = "scale(1)";
     newColor = new Color;
+    palette = `base: ${newColor.rgb()}, light: ${newColor.light()}, dark: ${newColor.dark()}`;
     setColors(newColor);
     rgbText(newColor);
 })
 
 translate.addEventListener('click', function () {
     if (baseColor.innerText[0] === 'r') {
+        palette = `base: ${newColor.hex()}, light: ${newColor.lightHex()}, dark: ${newColor.darkHex()}`;
         return hexText(newColor)
     }
    rgbText(newColor)
+})
+
+clipboard.addEventListener('click', async function () {
+    await navigator.clipboard.writeText(palette);
+})
+
+colorResults.forEach((result) => {
+    result.addEventListener('click', async(e) => {
+        await navigator.clipboard.writeText(e.target.innerText);
+    })
 })

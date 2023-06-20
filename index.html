@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://kit.fontawesome.com/04e3fb49b4.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap" rel="stylesheet">
-    <title>simple color generator</title>
+    <title>Color Generator</title>
 </head>
 
 <body class="d-flex flex-column position-relative min-vh-100">
@@ -34,15 +35,20 @@
             <div id="results-column" class="col-md-6 mb-5 mb-md-0">
                 <div class="card rounded-4 container shadow" id="scheme">
                     <div class="card-body">
-                        <h2 class="card-title" id="scheme-title">scheme</h2>
+                        <div class="d-flex justify-content-between align-items-center mb-1" id="scheme-title">
+                            <h2 class="card-title">palette</h2>
+                            <button class="btn" id="clipboard">
+                                <i class="bi bi-clipboard"></i>
+                            </button>
+                        </div>
                         <div id="scheme-container" class="d-flex flex-column">
-                            <div id="light" class="color-result rounded-pill">
+                            <div id="light" role="button"  class="color-result rounded-pill">
                                 <h3 class="color-info" id="color-info-light"></h3>
                             </div>
-                            <div id="reg" class="color-result w-100 rounded-pill">
+                            <div id="reg"  role="button" class="color-result w-100 rounded-pill">
                                 <h3 class="color-info" id="color-info-reg"></h3>
                             </div>
-                            <div id="dark" class="color-result w-100 rounded-pill">
+                            <div id="dark"  role="button" class="color-result w-100 rounded-pill">
                                 <h3 class="color-info" id="color-info-dark"></h3>
                             </div>
                         </div>

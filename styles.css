@@ -27,10 +27,12 @@ nav, h1, h2 {
     justify-content: center;
     align-items: center;
     position: relative;
+    cursor: pointer;
 }
 
 .color-result:hover .color-info,
-.color-result:focus .color-info {
+.color-result:focus .color-info
+.color-reult:active .color-info {
     transform: scale(1);
 }
 
