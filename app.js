@@ -24,6 +24,9 @@ const colorResults = document.querySelectorAll('.color-result');
 
 const clipboardButton = document.querySelector('#clipboard-button');
 const clipboardIcon = document.querySelector('#clipboard-icon');
+const showButton = document.querySelector('#show-button');
+const showIcon = document.querySelector('#show-icon');
+const colorInfos = document.querySelectorAll('.color-info');
 
 let newColor;
 let palette;
@@ -104,6 +107,8 @@ function setColors(color) {
     colorInfoReg.style.color = color.dark(2);
     colorInfoLight.style.color = color.dark();
     footerText.style.color = color.dark();
+    clipboardIcon.style.color = color.dark();
+    showIcon.style.color = color.dark();
 
     // light
     colorInfoDark.style.color = color.light();
@@ -116,7 +121,6 @@ function setColors(color) {
     // reg
     document.body.style.backgroundColor = color.rgb();
     schemeTitle.style.color = color.rgb();
-    clipboardIcon.style.color = color.dark();
     reg.style.backgroundColor = color.rgb();
 }
 
@@ -161,6 +165,21 @@ clipboardButton.addEventListener('click', async function () {
     await navigator.clipboard.writeText(palette);
     clipboardIcon.classList.remove('bi-clipboard');
     clipboardIcon.classList.add('bi-clipboard-check');
+})
+
+showButton.addEventListener('click', function () {
+    if (showButton.children[0].classList.contains('bi-eye-slash')) {
+        colorInfos.forEach((info) => {
+            info.style.transform = 'scale(1)';
+        })
+        showIcon.classList.remove('bi-eye-slash');
+       return showIcon.classList.add('bi-eye')
+    }
+    colorInfos.forEach((info) => {
+        info.style.transform = 'scale(0)'
+    })
+    showIcon.classList.remove('bi-eye');
+    showIcon.classList.add('bi-eye-slash');
 })
 
 colorResults.forEach((result) => {

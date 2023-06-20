@@ -14,7 +14,7 @@ nav, h1, h2 {
 }
 
 .header {
-    font-size: calc(40px + (80 - 40) * ((100vw - 200px) / (1440 - 200)));
+    font-size: calc(40px + (70 - 40) * ((100vw - 200px) / (1440 - 200)));
 }
 
 #scheme-container{
@@ -28,12 +28,6 @@ nav, h1, h2 {
     align-items: center;
     position: relative;
     cursor: pointer;
-}
-
-.color-result:hover .color-info,
-.color-result:focus .color-info
-.color-reult:active .color-info {
-    transform: scale(1);
 }
 
 #results-column {
