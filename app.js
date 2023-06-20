@@ -22,7 +22,8 @@ const footerText = document.querySelector('#footer-text');
 const footer = document.querySelector('footer');
 const colorResults = document.querySelectorAll('.color-result');
 
-const clipboard = document.querySelector('#clipboard')
+const clipboardButton = document.querySelector('#clipboard-button');
+const clipboardIcon = document.querySelector('#clipboard-icon');
 
 let newColor;
 let palette;
@@ -115,6 +116,7 @@ function setColors(color) {
     // reg
     document.body.style.backgroundColor = color.rgb();
     schemeTitle.style.color = color.rgb();
+    clipboardIcon.style.color = color.dark();
     reg.style.backgroundColor = color.rgb();
 }
 
@@ -135,6 +137,8 @@ btn.addEventListener('click', function () {
     titleColumn.classList.remove('offset-md-3');
     titleColumn.classList.add('align-items-md-end');
     resultsColumn.style.transform = "scale(1)";
+    clipboardIcon.classList.remove('bi-clipboard-check');
+    clipboardIcon.classList.add('bi-clipboard');
     newColor = new Color;
     palette = `base: ${newColor.rgb()}, light: ${newColor.light()}, dark: ${newColor.dark()}`;
     setColors(newColor);
@@ -143,14 +147,20 @@ btn.addEventListener('click', function () {
 
 translate.addEventListener('click', function () {
     if (baseColor.innerText[0] === 'r') {
+        clipboardIcon.classList.remove('bi-clipboard-check');
+        clipboardIcon.classList.add('bi-clipboard');
         palette = `base: ${newColor.hex()}, light: ${newColor.lightHex()}, dark: ${newColor.darkHex()}`;
         return hexText(newColor)
     }
+   clipboardIcon.classList.remove('bi-clipboard-check');
+   clipboardIcon.classList.add('bi-clipboard');
    rgbText(newColor)
 })
 
-clipboard.addEventListener('click', async function () {
+clipboardButton.addEventListener('click', async function () {
     await navigator.clipboard.writeText(palette);
+    clipboardIcon.classList.remove('bi-clipboard');
+    clipboardIcon.classList.add('bi-clipboard-check');
 })
 
 colorResults.forEach((result) => {

@@ -31,19 +31,15 @@ I also am revisiting this after building my portfolio in React and Tailwind, so 
 
 This app is very simple. You make a 3-stop monochromatic scheme with the click of a button, which definitely serves its purpose, but it is not the comprehensive tool which I would like it to be. I would like to add options for different color schemes (i.e., complementary, tertiary, triadic, etc.)
 
-2. Copy to clipboard
-
-I need to learn more about the Clipboard API to make this more functional. It is all well-and-good to generate random colors, but for it to be more functional, the user should be able to copy the colors to a clipboard to paste wherever they may be using them.
-
-3. Download scheme
+2. Download scheme
 
 I would like to be able to export the scheme card to an image that the client can download for referencing later.
 
-4. History
+3. History
 
 I would like there to be some sort of history functionality whereby the app remembers your 5 or so most recent colors, and there's an option to save/pin these using local memory.
 
-5. Transfer the app to a new framework
+4. Transfer the app to a new framework
 
 To deal with the added complexities which I would like to add, I will likely need this to be built on a framework, like React. 
 
