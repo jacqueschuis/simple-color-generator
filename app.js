@@ -30,6 +30,7 @@ const colorInfos = document.querySelectorAll('.color-info');
 
 let newColor;
 let palette;
+let visibleResults = 0;
 
 class Color {
     constructor () {
@@ -163,27 +164,65 @@ translate.addEventListener('click', function () {
 
 clipboardButton.addEventListener('click', async function () {
     await navigator.clipboard.writeText(palette);
+    colorResults.forEach((result) => {
+        const val = result.innerText;
+        result.children[0].style.transform = "scale(1)"
+        showIcon.classList.remove('bi-eye-slash');
+        showIcon.classList.add('bi-eye');
+        result.children[0].innerText = 'copied!'
+        setTimeout(function(){
+            result.children[0].innerText = val
+        }, 600)
+    })
     clipboardIcon.classList.remove('bi-clipboard');
     clipboardIcon.classList.add('bi-clipboard-check');
 })
 
 showButton.addEventListener('click', function () {
     if (showButton.children[0].classList.contains('bi-eye-slash')) {
-        colorInfos.forEach((info) => {
-            info.style.transform = 'scale(1)';
-        })
+        visibleResults = 3;
         showIcon.classList.remove('bi-eye-slash');
        return showIcon.classList.add('bi-eye')
     }
     colorInfos.forEach((info) => {
         info.style.transform = 'scale(0)'
     })
+    visibleResults = 0;
     showIcon.classList.remove('bi-eye');
     showIcon.classList.add('bi-eye-slash');
 })
 
 colorResults.forEach((result) => {
-    result.addEventListener('click', async(e) => {
-        await navigator.clipboard.writeText(e.target.innerText);
+    result.addEventListener('click', (e) => {
+        const clip = e.target.innerText;
+        if (e.target.nodeName === "DIV") {
+            e.target.children[0].style.transform = "scale(1)";
+            if (visibleResults < 3) {
+                visibleResults += 1
+            }
+            e.target.children[0].innerText = 'copied!'
+            setTimeout(function () {
+                e.target.children[0].innerText = clip
+            }, 600)
+        } else if (e.target.nodeName === 'H3') {
+            e.target.innerText = 'copied!'
+            if (visibleResults < 3) {
+                visibleResults += 1
+            }
+            setTimeout(function () {
+                e.target.innerText = clip
+            }, 600)
+        }
+        navigator.clipboard.writeText(clip);
     })
+})
+
+document.addEventListener('click', function () {
+    if (visibleResults === 3) {
+        showIcon.classList.remove('bi-eye-slash');
+        showIcon.classList.add('bi-eye');
+        return colorInfos.forEach((info) => {
+            info.style.transform = 'scale(1)';
+        })
+    }
 })
