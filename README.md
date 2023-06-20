@@ -17,6 +17,8 @@ This color generator is the first app that I ever built. As I was following alon
 
 I initially built this in the fall of 2022, but I revisited in summer 2023, rehauling the design of the app to fit with my current style. All of the same functionality is there, but things are (I'd like to think) much clearer now, and the code is simpler and more efficient than it was previously.
 
+I've added a show/hide button, as well as event handlers to show/hide individual color names. I have added integration with the Clipboard API that allows you to copy the entire palette or just individual colors, and I use set timeout functions to show temporary messages when colors are copied. Initially, this was just an exercise in DOM manipulation, but now I would say that it is a self-contained and both functional and usable app for anyone looking to generate a simple monochromatic color palette.
+
 ## Challenges
 
 ### Redesign
