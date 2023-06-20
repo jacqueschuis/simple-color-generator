@@ -195,6 +195,8 @@ showButton.addEventListener('click', function () {
 colorResults.forEach((result) => {
     result.addEventListener('click', (e) => {
         const clip = e.target.innerText;
+        clipboardIcon.classList.remove('bi-clipboard-check');
+        clipboardIcon.classList.add('bi-clipboard');
         if (e.target.nodeName === "DIV") {
             e.target.children[0].style.transform = "scale(1)";
             if (visibleResults < 3) {
