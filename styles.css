@@ -1,3 +1,8 @@
+html,
+body {
+  overflow-x: hidden;
+}
+
 body, #new-color, .color-info {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -21,13 +26,31 @@ nav, h1, h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.color-result:hover .color-info,
+.color-result:focus .color-info {
+    transform: scale(1);
+}
+
+#results-column {
+    transition: .15s;
+    transform: scale(0);
 }
 
 .color-info {
     font-size: calc(25px + (30 - 25) * ((100vw - 200px) / (1440 - 200)));
+    transform: scale(0);
+    position: absolute;
+    transition: .15s;
 }
 
 span {
     display: block;
+}
+
+#portfolio-link {
+    color: inherit !important;
 }
 

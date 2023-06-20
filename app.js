@@ -18,6 +18,8 @@ const colorInfoReg = document.querySelector('#color-info-reg');
 const colorInfoLight = document.querySelector('#color-info-light');
 const titleColumn = document.querySelector('#title-column');
 const resultsColumn = document.querySelector('#results-column');
+const footerText = document.querySelector('#footer-text');
+const footer = document.querySelector('footer');
 
 let newColor;
 
@@ -96,10 +98,12 @@ function setColors(color) {
     dark.style.backgroundColor = color.dark();
     colorInfoReg.style.color = color.dark(2);
     colorInfoLight.style.color = color.dark();
+    footerText.style.color = color.dark();
 
     // light
     colorInfoDark.style.color = color.light();
     nav.style.backgroundColor = color.light();
+    footer.style.backgroundColor = color.light();
     btn.style.backgroundColor = color.light();
     translate.style.backgroundColor = color.light();
     light.style.backgroundColor = color.light();
@@ -125,10 +129,9 @@ function hexText(color) {
 }
 
 btn.addEventListener('click', function () {
-    titleColumn.classList.add('col-md-6');
+    titleColumn.classList.remove('offset-md-3');
     titleColumn.classList.add('align-items-md-end');
-    resultsColumn.classList.remove('d-none');
-    resultsColumn.classList.add('col-md-6');
+    resultsColumn.style.transform = "scale(1)";
     newColor = new Color;
     setColors(newColor);
     rgbText(newColor);
