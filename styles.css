@@ -13,6 +13,32 @@ nav, h1, h2 {
     letter-spacing: .1rem;
 }
 
+#title,
+nav,
+#logo,
+#translate,
+.header,
+#description,
+#new-color,
+#base-color,
+#dark,
+#reg,
+#light,
+#scheme-title,
+#color-info-dark,
+#color-info-reg,
+#color-info-light,
+#footer-text,
+footer,
+#color-result,
+#clipboard-button,
+#clipboard-icon,
+#show-button,
+#show-icon,
+.color-info {
+    transition: .5s
+}
+
 .header {
     font-size: calc(40px + (70 - 40) * ((100vw - 200px) / (1440 - 200)));
 }
@@ -37,7 +63,6 @@ nav, h1, h2 {
 .color-info {
     font-size: calc(25px + (30 - 25) * ((100vw - 200px) / (1440 - 200)));
     transform: scale(0);
-    transition: .15s;
 }
 
 span {

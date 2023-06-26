@@ -1,6 +1,4 @@
 const head = document.querySelector('#title');
-const rgb = document.querySelector('#rgb');
-const hex = document.querySelector('#hex');
 const nav = document.querySelector('nav');
 const logo = document.querySelector('#logo');
 const translate = document.querySelector('#translate');
