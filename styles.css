@@ -3,14 +3,18 @@ body {
   overflow-x: hidden;
 }
 
-body, #new-color, .color-info {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+body,
+#new-color,
+.color-info {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
 }
 
-nav, h1, h2 {
-    font-family: 'Bagel Fat One', cursive;
-    letter-spacing: .1rem;
+nav,
+h1,
+h2 {
+  font-family: "Bagel Fat One", cursive;
+  letter-spacing: 0.1rem;
 }
 
 #title,
@@ -36,44 +40,43 @@ footer,
 #show-button,
 #show-icon,
 .color-info {
-    transition: .5s
+  transition: 0.5s;
 }
 
 .header {
-    font-size: calc(40px + (70 - 40) * ((100vw - 200px) / (1440 - 200)));
+  font-size: calc(40px + (70 - 40) * ((100vw - 200px) / (1440 - 200)));
 }
 
-#scheme-container{
-    gap: 10px;
+#scheme-container {
+  gap: 10px;
 }
 
 .color-result {
-    height: calc(80px + (110 - 80) * ((100vw - 200px) / (1440 - 200)));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  height: calc(80px + (110 - 80) * ((100vw - 200px) / (1440 - 200)));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 #results-column {
-    transition: .15s;
-    transform: scale(0);
+  transition: 0.15s;
+  transform: scale(0);
 }
 
 .color-info {
-    font-size: calc(25px + (30 - 25) * ((100vw - 200px) / (1440 - 200)));
-    transform: scale(0);
+  font-size: calc(25px + (30 - 25) * ((100vw - 200px) / (1440 - 200)));
+  transform: scale(0);
 }
 
 span {
-    display: block;
+  display: block;
 }
 
 footer {
-    font-size: 12px
+  font-size: 12px;
 }
 
 #portfolio-link {
-    color: inherit !important;
+  color: inherit !important;
 }
-
